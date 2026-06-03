@@ -1,0 +1,32 @@
+[
+    {
+        "id": 0,
+        "url": "",
+        "title": "Dashboard",
+        "Icon": "Cog6ToothIcon"
+    },
+    {
+        "id": 1,
+        "url": "",
+        "title": "Usuários",
+        "Icon": "UserIcon"
+    },
+    {
+        "id": 2,
+        "url": "",
+        "title": "Igrejas",
+        "Icon": "HomeIcon"
+    },
+    {
+        "id": 3,
+        "url": "",
+        "title": "Turmas",
+        "Icon": "UserGroupIcon"
+    },
+    {
+        "id": 4,
+        "url": "",
+        "title": "Formações",
+        "Icon": "BookOpenIcon"
+    }
+]

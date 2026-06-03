@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div>
-      <div className='h-full flex'>
+      <div className='h-full flex sm:flex-row flex-col'>
         <Sidebar/>
         <Index/>
       </div>
