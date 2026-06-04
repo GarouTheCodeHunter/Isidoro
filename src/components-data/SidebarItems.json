@@ -1,31 +1,31 @@
 [
     {
         "id": 0,
-        "url": "",
+        "url": "/dashboard",
         "title": "Dashboard",
         "Icon": "Cog6ToothIcon"
     },
     {
         "id": 1,
-        "url": "",
+        "url": "/users",
         "title": "Usuários",
         "Icon": "UserIcon"
     },
     {
         "id": 2,
-        "url": "",
+        "url": "/churchs",
         "title": "Igrejas",
         "Icon": "HomeIcon"
     },
     {
         "id": 3,
-        "url": "",
+        "url": "/classes",
         "title": "Turmas",
         "Icon": "UserGroupIcon"
     },
     {
         "id": 4,
-        "url": "",
+        "url": "/formations",
         "title": "Formações",
         "Icon": "BookOpenIcon"
     }
