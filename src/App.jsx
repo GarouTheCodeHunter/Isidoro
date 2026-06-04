@@ -10,7 +10,7 @@ import Classes from "./pages/Classes";
 import Calendar from "./pages/Calendar";
 import Dashboard from "./pages/Dashboard";
 import Formation from "./pages/Formation";
-import Users from "./pages/Users";
+import Users from "./pages/Users/Users";
 import { Routes, Route } from "react-router-dom";
 
 function App() {

@@ -28,5 +28,11 @@
         "url": "/formations",
         "title": "Formações",
         "Icon": "BookOpenIcon"
+    },
+    {
+        "id": 5,
+        "url": "/calendar",
+        "title": "Calendário",
+        "Icon": "CalendarDateRangeIcon"
     }
 ]
