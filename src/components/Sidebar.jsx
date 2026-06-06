@@ -35,7 +35,7 @@ const Sidebar = () => {
   }, [screenSize, toggleMenu]);
 
   return (
-    <aside className="w-full min-w-50 sm:w-55 p-4 bg-blue-600 flex justify-center sm:h-screen">
+    <aside className="sm:min-w-55 p-4 bg-blue-600 flex justify-center sm:h-screen">
       <nav className="w-full flex items-center flex-col">
         <div className="flex items-center gap-3">
           <Link
