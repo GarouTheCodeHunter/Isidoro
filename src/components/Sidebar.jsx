@@ -31,7 +31,7 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    if (screenSize.width >= 640 && !toggleMenu) setToggleMenu(true);
+    if (screenSize.width >= 800 && !toggleMenu) setToggleMenu(true);
   }, [screenSize, toggleMenu]);
 
   return (
@@ -40,7 +40,7 @@ const Sidebar = () => {
         <div className="flex items-center gap-3">
           <Link
             className={
-              screenSize.width <= 639
+              screenSize.width <= 800
                 ? `flex items-center gap-3 font-bold text-2xl font-roboto tracking-wide text-white text-center`
                 : "flex font-bold text-2xl font-roboto tracking-wide text-white text-center"
             }
@@ -48,7 +48,7 @@ const Sidebar = () => {
           >
             Isidoro
           </Link>
-          {screenSize.width <= 639 ? (
+          {screenSize.width <= 640 ? (
             <button
               className="cursor-pointer text-white"
               onClick={() => handleHeaderMenu()}
@@ -63,7 +63,7 @@ const Sidebar = () => {
           id="ulSidebar"
           className={
             toggleMenu
-              ? `flex items-center sm:items-start flex-col gap-2 sm:mt-10 mt-5 w-full`
+              ? `flex items-center sm:items-start flex-col gap-2 lg:mt-10 mt-5 w-full`
               : `hidden`
           }
         >

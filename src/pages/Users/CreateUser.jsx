@@ -18,14 +18,14 @@ const CreateUser = () => {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <section className="w-full gap-5 items-center flex flex-col">
-      <div className="flex max-w-6xl w-full flex-col gap-2 sm:p-0 pl-15">
+    <section className="gap-5 w-full items-center flex flex-col justify-center">
+      <div className="flex w-[90%] flex-col gap-2 sm:p-0">
         <h1 className="text-4xl font-semibold">Criar novo usuário</h1>
         <p className="text-zinc-700">
           Preencha os dados abaixo para cadastrar um novo usuário no sistema.
         </p>
       </div>
-      <div className="w-[80%] max-w-6xl bg-white flex flex-col p-5 rounded">
+      <div className="w-[90%] bg-white flex flex-col p-5 rounded">
         <div className="flex flex-col">
           <div className="flex items-center gap-2 mb-5 ml-4 p-5">
             <UserIcon className="w-13 h-13 p-2 text-blue-800 bg-blue-300/50 rounded-full" />
@@ -41,7 +41,7 @@ const CreateUser = () => {
             onSubmit={() => onSubmit}
             className="grid grid-cols-2 gap-5 ml-4 p-5"
           >
-            <div className="flex flex-col">
+            <div className="flex flex-col lg:col-span-1 col-span-2">
               <label htmlFor="name" className="font-bold mb-2">
                 Nome
               </label>
@@ -55,10 +55,10 @@ const CreateUser = () => {
                 id="name"
                 name="name"
                 placeholder="Digite o primeiro nome"
-                className="p-5 rounded border-gray-400 border"
+                className="lg:p-5 p-3 rounded border-gray-400 border"
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col lg:col-span-1 col-span-2">
               <label htmlFor="lastName" className="font-bold mb-2">
                 Ultimo nome
               </label>
@@ -72,7 +72,7 @@ const CreateUser = () => {
                 id="lastName"
                 name="lastName"
                 placeholder="Digite o sobrenome"
-                className="p-5 rounded border-gray-400 border"
+                className="lg:p-5 p-3 rounded border-gray-400 border"
               />
             </div>
             <div className="flex flex-col col-span-2">
@@ -91,7 +91,7 @@ const CreateUser = () => {
                 id="email"
                 name="email"
                 placeholder="Digite o e-mail do usuário"
-                className="p-5 rounded border-gray-400 border"
+                className="lg:p-5 p-3 rounded border-gray-400 border"
               />
             </div>
             <div className="flex flex-col">
@@ -107,10 +107,10 @@ const CreateUser = () => {
                 id="password"
                 name="password"
                 placeholder="Digite a senha"
-                className="p-5 rounded border-gray-400 border"
+                className="lg:p-5 p-3 rounded border-gray-400 border"
               />
             </div>
-            <div className="flex flex-col sm:w-full">
+            <div className="flex flex-col">
               <label htmlFor="repeatedPassword" className="font-bold mb-2">
                 Repetir a senha
               </label>
@@ -123,7 +123,7 @@ const CreateUser = () => {
                 id="repeatedPassword"
                 name="repeatedPassword"
                 placeholder="Repita a senha"
-                className="p-5 rounded border-gray-400 border"
+                className="lg:p-5 p-3 rounded border-gray-400 border"
               />
             </div>
             <div className="flex flex-col col-span-2 sm:w-full">
@@ -137,7 +137,7 @@ const CreateUser = () => {
                 id="role"
                 name="role"
                 placeholder="Selecione uma função"
-                className="p-5 rounded border-gray-400 border"
+                className="lg:p-5 p-3 rounded border-gray-400 border"
               >
                 <option value="catequista">Catequista</option>
                 <option value="coordenador">Coordenador</option>
