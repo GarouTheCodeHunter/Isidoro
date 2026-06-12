@@ -5,11 +5,11 @@ import heroImg from "./assets/hero.png";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Index from "./pages/Index";
-import Churchs from "./pages/Churchs";
 import Classes from "./pages/Classes";
 import Calendar from "./pages/Calendar";
 import Dashboard from "./pages/Dashboard";
 import Formation from "./pages/Formation";
+import Churchs from "./pages/Chuch/Churchs";
 import Users from "./pages/Users/Users";
 import { Routes, Route } from "react-router-dom";
 
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div>
-      <div className="h-full flex sm:flex-row flex-col">
+      <div className="h-full flex sm:flex-row flex-col bg-gray-200">
         <Sidebar />
         <Routes>
           <Route element={<Index />} path="/" />
