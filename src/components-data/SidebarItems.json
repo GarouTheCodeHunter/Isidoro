@@ -7,30 +7,36 @@
     },
     {
         "id": 1,
-        "url": "/users",
-        "title": "Usuários",
+        "url": "/operators",
+        "title": "Operadores",
         "Icon": "UserIcon"
     },
     {
         "id": 2,
+        "url": "/users",
+        "title": "Usuários",
+        "Icon": "UserGroupIcon"
+    },
+    {
+        "id": 3,
         "url": "/churchs",
         "title": "Igrejas",
         "Icon": "HomeIcon"
     },
     {
-        "id": 3,
+        "id": 4,
         "url": "/classes",
         "title": "Turmas",
         "Icon": "UserGroupIcon"
     },
     {
-        "id": 4,
+        "id": 5,
         "url": "/formations",
         "title": "Formações",
         "Icon": "BookOpenIcon"
     },
     {
-        "id": 5,
+        "id": 6,
         "url": "/calendar",
         "title": "Calendário",
         "Icon": "CalendarDateRangeIcon"

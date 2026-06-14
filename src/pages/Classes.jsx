@@ -13,7 +13,7 @@ const Classes = () => {
     const fetchClasses = async () => {
       try {
         setLoading(true);
-        // Simulação de chamada de API
+        // Implementar chamada real de API aqui:
         // const response = await api.get('/classes');
         // setClasses(response.data);
       } catch (error) {
@@ -28,58 +28,59 @@ const Classes = () => {
   const handleDelete = (id) => {
     if (window.confirm("Tem certeza que deseja excluir esta turma?")) {
       console.log("Delete class ID:", id);
-      // api.delete(`/classes/${id}`)
     }
   };
 
   return (
     <FormLayout>
-      <div className="flex flex-col sm:flex-row w-full justify-between items-start sm:items-center gap-4">
+      <div className="flex flex-col sm:flex-row w-full justify-between items-start sm:items-end gap-4">
         <PageHeader 
           title="Turmas" 
-          description="Gerencie as turmas de catequese e formação." 
+          description="Gerencie as turmas de catequese e formação da sua paróquia." 
         />
-        <Button to="/classes/create" className="flex items-center gap-2 w-full sm:w-auto justify-center">
+        <Button to="/classes/create" className="w-full sm:w-auto shadow-sm">
           <PlusIcon className="w-5 h-5" />
           Nova Turma
         </Button>
       </div>
 
-      <div className="w-full bg-white rounded-lg shadow-sm border border-zinc-200 overflow-hidden mt-4">
+      <div className="w-full bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mt-2">
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[600px]">
+          <table className="w-full text-left border-collapse min-w-[700px]">
             <thead>
-              <tr className="bg-zinc-50 border-b border-zinc-200">
-                <th className="p-4 font-bold text-zinc-700 text-sm">Nome</th>
-                <th className="p-4 font-bold text-zinc-700 text-sm">Igreja</th>
-                <th className="p-4 font-bold text-zinc-700 text-sm">Catequista</th>
-                <th className="p-4 font-bold text-zinc-700 text-sm text-right">Ações</th>
+              <tr className="bg-slate-50/50 border-b border-slate-100">
+                <th className="p-4 md:p-5 font-bold text-slate-400 text-xs uppercase tracking-wider">Nome</th>
+                <th className="p-4 md:p-5 font-bold text-slate-400 text-xs uppercase tracking-wider">Igreja</th>
+                <th className="p-4 md:p-5 font-bold text-slate-400 text-xs uppercase tracking-wider">Catequista</th>
+                <th className="p-4 md:p-5 font-bold text-slate-400 text-xs uppercase tracking-wider text-right">Ações</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-slate-50">
               {loading ? (
                 [1, 2, 3].map(i => (
-                  <tr key={i} className="border-b border-zinc-100">
-                    <td colSpan="4" className="p-4"><div className="h-6 bg-zinc-50 animate-pulse rounded w-full"></div></td>
+                  <tr key={i}>
+                    <td colSpan="4" className="p-5"><div className="h-10 bg-slate-50 animate-pulse rounded-lg w-full"></div></td>
                   </tr>
                 ))
               ) : classes.length > 0 ? (
                 classes.map((cls) => (
-                  <tr key={cls.id} className="border-b border-zinc-100 hover:bg-zinc-50 transition-colors">
-                    <td className="p-4">
+                  <tr key={cls.id} className="group hover:bg-slate-50/30 transition-colors">
+                    <td className="p-4 md:p-5">
                       <div className="flex items-center gap-3">
-                        <UserGroupIcon className="w-8 h-8 text-blue-500 bg-blue-50 p-1.5 rounded-full shrink-0" />
-                        <span className="font-medium text-zinc-800 text-sm md:text-base">{cls.nome}</span>
+                        <div className="w-10 h-10 bg-violet-50 text-violet-600 rounded-lg flex items-center justify-center shrink-0">
+                          <UserGroupIcon className="w-5 h-5" />
+                        </div>
+                        <span className="font-semibold text-slate-800 text-base">{cls.nome}</span>
                       </div>
                     </td>
-                    <td className="p-4 text-zinc-600 text-sm md:text-base">{cls.igreja}</td>
-                    <td className="p-4 text-zinc-600 text-sm md:text-base">{cls.catequista}</td>
-                    <td className="p-4 text-right">
-                      <div className="flex justify-end gap-2">
-                        <Link to={`/classes/edit/${cls.id}`} className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Editar">
+                    <td className="p-4 md:p-5 text-slate-500 font-medium text-sm">{cls.igreja}</td>
+                    <td className="p-4 md:p-5 text-slate-500 font-medium text-sm">{cls.catequista}</td>
+                    <td className="p-4 md:p-5 text-right">
+                      <div className="flex justify-end gap-1">
+                        <Link to={`/classes/edit/${cls.id}`} className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all" title="Editar">
                           <PencilSquareIcon className="w-5 h-5" />
                         </Link>
-                        <button onClick={() => handleDelete(cls.id)} className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Excluir">
+                        <button onClick={() => handleDelete(cls.id)} className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all" title="Excluir">
                           <TrashIcon className="w-5 h-5" />
                         </button>
                       </div>
@@ -88,8 +89,8 @@ const Classes = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="4" className="p-10 text-center text-zinc-400">
-                    Nenhuma turma cadastrada.
+                  <td colSpan="4" className="p-16 text-center">
+                    <p className="text-slate-400 font-medium text-sm">Nenhuma turma cadastrada.</p>
                   </td>
                 </tr>
               )}

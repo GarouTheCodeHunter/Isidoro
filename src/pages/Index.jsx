@@ -76,26 +76,21 @@ const Index = () => {
                 {
                   title: "Gestão de Usuários",
                   desc: "Controle total sobre membros, cargos e permissões de acesso de forma intuitiva.",
-                  icon: "👥"
                 },
                 {
                   title: "Administração de Igrejas",
                   desc: "Organize múltiplas sedes, congregações e departamentos centralizadamente.",
-                  icon: "⛪"
                 },
                 {
                   title: "Formações e Aulas",
                   desc: "Gerencie o crescimento espiritual e acadêmico com módulos de formação integrados.",
-                  icon: "📖"
                 },
                 {
                   title: "Calendário Integrado",
                   desc: "Nunca perca um evento importante com nosso sistema de agenda sincronizada.",
-                  icon: "📅"
                 }
               ].map((feature, idx) => (
                 <div key={idx} className="p-8 bg-gray-50 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-                  <div className="text-4xl mb-4">{feature.icon}</div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
                   <p className="text-gray-600">{feature.desc}</p>
                 </div>

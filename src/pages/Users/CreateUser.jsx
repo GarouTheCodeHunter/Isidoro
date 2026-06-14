@@ -45,7 +45,7 @@ const CreateUser = () => {
         title="Dados do usuário"
         description="Informações para acesso ao sistema."
       >
-        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           <Input
             label="Nome"
             {...register("name", {
@@ -103,6 +103,19 @@ const CreateUser = () => {
             error={errors.repeatedPassword?.message}
           />
           <Select
+            label="Igreja"
+            {...register("church_id", {
+              required: "Vínculo com uma igreja é obrigatório.",
+            })}
+            id="church_id"
+            options={[
+              { value: "", label: "Selecione uma igreja" },
+              // Dados virão da API de igrejas
+            ]}
+            error={errors.church_id?.message}
+            className="md:col-span-2"
+          />
+          <Select
             label="Função"
             {...register("role", {
               required: "Cargo obrigatório.",
@@ -116,7 +129,8 @@ const CreateUser = () => {
             error={errors.role?.message}
             className="md:col-span-2"
           />
-          <div className="flex flex-col-reverse sm:flex-row gap-3 items-center w-full justify-end md:col-span-2 mt-4">
+
+          <div className="flex flex-col-reverse sm:flex-row gap-2 items-center w-full justify-end md:col-span-2 mt-4">
             <Button variant="secondary" to="/users" className="w-full sm:w-auto">
               Cancelar
             </Button>
@@ -125,6 +139,7 @@ const CreateUser = () => {
             </Button>
           </div>
         </form>
+
       </FormSection>
     </FormLayout>
   );

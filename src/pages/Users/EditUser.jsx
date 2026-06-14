@@ -25,13 +25,11 @@ const EditUser = () => {
     const fetchUser = async () => {
       try {
         setFetching(true);
-        // Simulação de busca de dados do usuário
+        // Implementar busca real por ID aqui:
         // const response = await api.get(`/users/${id}`);
         // const user = response.data;
         // setValue("name", user.name);
-        // setValue("lastName", user.lastName);
-        // setValue("email", user.email);
-        // setValue("role", user.role);
+        // ...
       } catch (error) {
         console.error("Erro ao buscar dados do usuário", error);
       } finally {
@@ -100,6 +98,17 @@ const EditUser = () => {
             className="md:col-span-2"
           />
           <Select
+            label="Igreja"
+            {...register("church_id", { required: "Vínculo com uma igreja é obrigatório." })}
+            id="church_id"
+            options={[
+              { value: "", label: "Selecione uma igreja" },
+              // Dados virão da API de igrejas
+            ]}
+            error={errors.church_id?.message}
+            className="md:col-span-2"
+          />
+          <Select
             label="Função"
             {...register("role", { required: "Cargo obrigatório." })}
             id="role"
@@ -111,6 +120,7 @@ const EditUser = () => {
             error={errors.role?.message}
             className="md:col-span-2"
           />
+
           <div className="flex flex-col-reverse sm:flex-row gap-3 items-center w-full justify-end md:col-span-2 mt-4">
             <Button variant="secondary" to="/users" className="w-full sm:w-auto">
               Cancelar

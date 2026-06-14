@@ -41,7 +41,7 @@ const CreateChurch = () => {
         title="Dados da igreja"
         description="Informações para atribuir catequistas e crismandos/batizandos."
       >
-        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           <Input
             label="Nome da Igreja"
             {...register("church_name", {
@@ -95,7 +95,7 @@ const CreateChurch = () => {
             placeholder="Digite o nome da paróquia vinculada"
             error={errors.parish_of_church?.message}
           />
-          <div className="flex flex-col-reverse sm:flex-row gap-3 items-center w-full justify-end md:col-span-2 mt-4">
+          <div className="flex flex-col-reverse sm:flex-row gap-2 items-center w-full justify-end md:col-span-2 mt-4">
             <Button variant="secondary" to="/churchs" className="w-full sm:w-auto">
               Cancelar
             </Button>
@@ -104,6 +104,7 @@ const CreateChurch = () => {
             </Button>
           </div>
         </form>
+
       </FormSection>
     </FormLayout>
   );

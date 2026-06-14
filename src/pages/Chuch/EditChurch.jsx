@@ -24,11 +24,10 @@ const EditChurch = () => {
     const fetchChurch = async () => {
       try {
         setFetching(true);
-        // Simulação de busca de dados da igreja
+        // Implementar busca real por ID aqui:
         // const response = await api.get(`/churches/${id}`);
         // const church = response.data;
-        // setValue("church_name", church.name);
-        // ... set other fields
+        // ... set values
       } catch (error) {
         console.error("Erro ao buscar dados da igreja", error);
       } finally {
