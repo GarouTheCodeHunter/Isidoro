@@ -1,5 +1,5 @@
 import { UserIcon } from "@heroicons/react/24/outline";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import PageHeader from "../../components/ui/PageHeader";
 import FormSection from "../../components/ui/FormSection";
@@ -7,60 +7,85 @@ import Input from "../../components/ui/Input";
 import Select from "../../components/ui/Select";
 import Button from "../../components/ui/Button";
 import FormLayout from "../../components/ui/FormLayout";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-const CreateUser = () => {
+const EditUser = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [fetching, setFetching] = useState(true);
   const {
     register,
     handleSubmit,
-    watch,
+    setValue,
     formState: { errors },
   } = useForm();
 
-  const password = watch("password");
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        setFetching(true);
+        // Simulação de busca de dados do usuário
+        // const response = await api.get(`/users/${id}`);
+        // const user = response.data;
+        // setValue("name", user.name);
+        // setValue("lastName", user.lastName);
+        // setValue("email", user.email);
+        // setValue("role", user.role);
+      } catch (error) {
+        console.error("Erro ao buscar dados do usuário", error);
+      } finally {
+        setFetching(false);
+      }
+    };
+    fetchUser();
+  }, [id, setValue]);
 
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      console.log("Sending data to backend:", data);
-      // await api.post('/users', data);
+      console.log("Updating data in backend for ID:", id, data);
+      // await api.put(`/users/${id}`, data);
       // navigate('/users');
     } catch (error) {
-      console.error("Erro ao cadastrar usuário", error);
+      console.error("Erro ao atualizar usuário", error);
     } finally {
       setLoading(false);
     }
   };
 
+  if (fetching) {
+    return (
+      <FormLayout>
+        <div className="w-full flex justify-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        </div>
+      </FormLayout>
+    );
+  }
+
   return (
     <FormLayout>
       <PageHeader
-        title="Criar novo usuário"
-        description="Preencha os dados abaixo para cadastrar um novo usuário no sistema."
+        title="Editar Usuário"
+        description="Atualize as informações do usuário selecionado."
       />
       <FormSection
         icon={UserIcon}
         title="Dados do usuário"
-        description="Informações para acesso ao sistema."
+        description={`Editando perfil do ID: ${id}`}
       >
         <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           <Input
             label="Nome"
-            {...register("name", {
-              required: "Nome obrigatório.",
-              minLength: { value: 3, message: "Mínimo 3 caracteres" },
-            })}
+            {...register("name", { required: "Nome obrigatório." })}
             id="name"
             placeholder="Digite o primeiro nome"
             error={errors.name?.message}
           />
           <Input
             label="Sobrenome"
-            {...register("lastName", {
-              required: "Sobrenome obrigatório.",
-            })}
+            {...register("lastName", { required: "Sobrenome obrigatório." })}
             id="lastName"
             placeholder="Digite o sobrenome"
             error={errors.lastName?.message}
@@ -68,45 +93,15 @@ const CreateUser = () => {
           <Input
             label="Email"
             type="email"
-            {...register("email", {
-              required: "Email obrigatório.",
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Endereço de email inválido.",
-              },
-            })}
+            {...register("email", { required: "Email obrigatório." })}
             id="email"
             placeholder="exemplo@email.com"
             error={errors.email?.message}
             className="md:col-span-2"
           />
-          <Input
-            label="Senha"
-            type="password"
-            {...register("password", {
-              required: "Senha obrigatória.",
-              minLength: { value: 8, message: "Mínimo 8 caracteres" },
-            })}
-            id="password"
-            placeholder="Crie uma senha forte"
-            error={errors.password?.message}
-          />
-          <Input
-            label="Repetir a senha"
-            type="password"
-            {...register("repeatedPassword", {
-              required: "Confirmação de senha obrigatória.",
-              validate: value => value === password || "As senhas não coincidem"
-            })}
-            id="repeatedPassword"
-            placeholder="Confirme a senha"
-            error={errors.repeatedPassword?.message}
-          />
           <Select
             label="Função"
-            {...register("role", {
-              required: "Cargo obrigatório.",
-            })}
+            {...register("role", { required: "Cargo obrigatório." })}
             id="role"
             options={[
               { value: "", label: "Selecione uma função" },
@@ -121,7 +116,7 @@ const CreateUser = () => {
               Cancelar
             </Button>
             <Button type="submit" className="w-full sm:w-auto" disabled={loading}>
-              {loading ? "Cadastrando..." : "Cadastrar usuário"}
+              {loading ? "Salvando..." : "Salvar Alterações"}
             </Button>
           </div>
         </form>
@@ -130,6 +125,5 @@ const CreateUser = () => {
   );
 };
 
-export default CreateUser;
-
+export default EditUser;
 
